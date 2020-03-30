@@ -4,12 +4,34 @@
 
 This is documentation and a stub for meta-package
 
-- [x] bus
+## core
+
 - [x] master
+- [x] bus
+- [x] slave-node
 - [ ] send-queue
+
+## drivers
+
+- [ ] bus-python
+- [ ] bus-ruby
+- [ ] bus-net
+- [ ] bus-jvm
+
+## protocols
+
 - [ ] irccloud
 - [ ] discord
 - [ ] telegram
+- [ ] irc
 - [ ] slack
-- [ ] bridge
+- [ ] facebook
+- [ ] twitter
+- [ ] signal
+- [ ] gitter
+- [ ] minecraft
 
+## services
+
+- [ ] bridge
+- [ ] logger
