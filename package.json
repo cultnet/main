@@ -4,5 +4,20 @@
   "repository": {
     "type": "git",
     "url": "http://github.com/cultnet/main.git"
+  },
+  "scripts": {
+    "build": "lsc -o dist -c src/main.ls"
+  },
+  "bin": {
+    "cultnet": "./bin/cultnet"
+  },
+  "devDependencies": {
+    "livescript": "^1.6.0"
+  },
+  "dependencies": {
+    "@cultnet/master": "^0.1.0",
+    "glob": "^7.1.6",
+    "mkdirp": "^1.0.3",
+    "rimraf": "^3.0.2"
   }
 }

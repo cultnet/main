@@ -1,15 +1,13 @@
 # cultnet
 
-> Join a cult!
-
-This is documentation and a stub for meta-package
+> Start a cult!
 
 ## core
 
 - [x] master
 - [x] bus
 - [x] slave-node
-- [ ] send-queue
+- [x] send-queue
 
 ## drivers
 
@@ -20,16 +18,17 @@ This is documentation and a stub for meta-package
 
 ## protocols
 
-- [ ] irccloud
+- [x] irccloud
 - [ ] discord
 - [ ] telegram
 - [ ] irc
+- [ ] minecraft
 - [ ] slack
+- [ ] teams
 - [ ] facebook
 - [ ] twitter
 - [ ] signal
 - [ ] gitter
-- [ ] minecraft
 
 ## services
 
