@@ -6,9 +6,10 @@ require! { fs:
   symlinkSync: symlink
   existsSync: exists
   readdirSync: readdir
+  lstatSync: lstat
 }
 
-MAIN = process.env.CULTNET_MAIN
+ROOT = resolve "#{__dirname}/../.."
 LIVE = process.env.CULTNET_LIVE is \true
 args = process.argv.slice (if LIVE then 3 else 2)
 
@@ -23,21 +24,20 @@ function master botdir
   Master.start botdir
 
 function devlinks
-  # TODO: doesnt link deps of deps
-  for json in glob "#{MAIN}/../*/package.json"
-    pkg = require json
-    if not pkg.dependencies then continue
-    deps = Object.keys(pkg.dependencies).filter -> it.starts-with "@cultnet/"
-    if deps.length is 0 then continue
-    for dep in deps
-      dep-dir = "#{dirname json}/node_modules/#{dep}"
-      target = resolve "#{MAIN}/../#{dep.slice dep.index-of "/"}"
-      if exists dep-dir
-        console.log "removing #{dep-dir}"
-        rimraf dep-dir
-      console.log "linking #{dep-dir} to #{target}"
-      mkdirp (dirname dep-dir)
-      symlink target, dep-dir
+  dirs =
+    readdir "#{ROOT}", { +with-file-types }
+      .filter -> it.is-directory!
+      .map -> it.name
+  for dir in dirs
+    cultdeps = "#{ROOT}/#{dir}/node_modules/@cultnet"
+    if exists cultdeps
+      if (lstat cultdeps).is-symbolic-link!
+        console.log "#{dir} ITS ALL GOOD"
+        continue
+      console.log "removing dir #{cultdeps}"
+      rimraf cultdeps
+    console.log "creating symlink #{cultdeps} to #{ROOT}"
+    symlink ROOT, cultdeps
 
 function help
   console.log "cultnet: start a cult\n"

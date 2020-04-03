@@ -2,9 +2,6 @@
 export CULTNET_BIN=$(dirname $(readlink -f $BASH_SOURCE))
 export CULTNET_MAIN=$(readlink -f $CULTNET_BIN/..)
 
-# DON'T CHECK THIS IN UNCOMMENTED LOL
-export CULTNET_LIVE=true
-
 case $CULTNET_LIVE in
   true)
     $CULTNET_MAIN/node_modules/.bin/lsc $CULTNET_MAIN/src/main "$@"
