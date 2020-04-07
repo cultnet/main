@@ -19,7 +19,7 @@
 ## protocols
 
 - [x] irccloud
-- [ ] discord
+- [x] discord
 - [ ] telegram
 - [ ] irc
 - [ ] minecraft
